@@ -24,7 +24,6 @@ export class ProductService{
         //Now we have to read response as json
         //jsonData hold arary of JavaScript object
         let jsonData=step.map((response) => response.json());
-        
         //Iterating all the JavaScript Object and converting into
         //Products type & finally creating Array of Products
          jsonData.map((item) => {

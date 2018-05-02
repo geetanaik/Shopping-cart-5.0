@@ -1,12 +1,59 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="200" alt="Angular Logo" src="../assets/img/math.png">
-  <marquee><h2>Here are some links to help you start: </h2></marquee>
-  <h2>{{message}}</h2>
-  <h2>Num is coming from class  = {{num}}</h2>
+  
+  <header style="background-color: aqua">
+    <h1>@Welcome to Angular2</h1>
+ </header>
+   <div style="float: left;">
+  <img width="100" alt="Angular Logo" src="../assets/img/math.png">
+  <h3>Product List</h3>
+   </div>
+   <br/>   <br/>
+  <table border="1" id="customers">
+    <tr>
+      <th>PID :</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Store</th>
+        <th>Mfg</th>
+      <th>Category</th>
+    </tr>
+    
+  <tbody  id="myContents">
+    <tr *ngFor="let product of productList">
+      <td>&nbsp;{{product.pid}}</td>
+      <td>&nbsp;{{product.name}}</td>
+      <td>&nbsp;<img src="{{product.image}}" height="100px;"/></td>
+      <td>&nbsp;{{product.price}}</td>
+      <td>&nbsp;{{product.store}}</td>
+      <td>&nbsp;{{product.mfg}}</td>
+      <td>&nbsp;{{product.category}}</td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+   
+    
+    </tbody>
+  </table>
+  <br/>
 </div>
 <div style="height: 20px;background-color: aqua">
 </div>

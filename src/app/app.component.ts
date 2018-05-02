@@ -14,7 +14,10 @@ export class AppComponent implements OnInit {
   public message:string ="Hey I am learning Angular2";
   public num:number=1;  
   public customer:Customer;  
+
+  public productList:Products[];
  
+  //Dependency injection is Angular2
   public constructor(private productService:ProductService){
     console.log("_@_@_@_Consuctor is called!!!!!!!!");
   }
@@ -31,8 +34,11 @@ export class AppComponent implements OnInit {
       this.customer=new Customer("Nagendra","nagen@gmail.com","+18282722",37,true);
       //Write code to fecth data from node.js
       let products:Observable<Products[]>=this.productService.loadProducts();
+      console.log(products);
+
       products.subscribe((results)=> {
         console.log(results)
+        this.productList=results;
       });
       //products.subscribe(function(results){
         // console.log(results); 
