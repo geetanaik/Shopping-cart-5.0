@@ -4,11 +4,14 @@
   <header style="background-color: aqua">
     <h1>@Welcome to Angular2</h1>
  </header>
+ <img height="150" alt="Angular Logo" src="../assets/img/food.png">
+ <img  style="margin-left: 150px;" alt="Angular Logo" src="../assets/img/add-product.png">
    <div style="float: left;">
-  <img width="100" alt="Angular Logo" src="../assets/img/math.png">
-  <h3>Product List</h3>
+   <h3>Product List</h3>
    </div>
-   <br/>   <br/>
+   <br/>
+   <span style="color:blue;font-size: 16px;">{{appMessage}}</span>
+   <hr/>
   <table border="1" id="customers">
     <tr>
       <th>PID :</th>
@@ -18,6 +21,7 @@
       <th>Store</th>
         <th>Mfg</th>
       <th>Category</th>
+      <th>Action</th>
     </tr>
     
   <tbody  id="myContents">
@@ -29,6 +33,13 @@
       <td>&nbsp;{{product.store}}</td>
       <td>&nbsp;{{product.mfg}}</td>
       <td>&nbsp;{{product.category}}</td>
+      <td>&nbsp;
+          <a href="javascript:" (click)="deleteProduct(product)">
+            <img width="100" alt="Angular Logo" src="../assets/img/delete.png" style="height: 50px;">
+          </a>
+    
+      </td>
+      
     </tr>
 
     <tr>
@@ -39,8 +50,10 @@
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
+      <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>

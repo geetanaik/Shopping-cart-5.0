@@ -3,6 +3,7 @@ import { Http } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { Products } from "../model/product";
 import "rxjs/add/operator/map";
+import { AppResponse } from "../model/app-response";
 /**
  * this is class which is used to bring data from rest api and
  * this data will be used inside component class
@@ -40,5 +41,23 @@ export class ProductService{
         });
         return jsonData;
      }
+
+     /**
+      * 
+      * @param mid mongoid given to the added product
+      * by the mongodb database
+      */
+     public deleteProductByPid(mid:string) : Observable<AppResponse> {
+        //step is normal response
+        console.log("mid  = "+mid);
+        let step=this.http.delete("http://localhost:3000/v1/products/"+mid);
+        //Now we have to read response as json
+        //jsonData hold arary of JavaScript object
+        //var data={status:"success",message:"Hey! your profile has been deleted successfully into the database!!!!!!!!!!!!!!!"};
+		//res.json(data);
+        let jsonData=step.map((response) => response.json());
+        return jsonData;
+     }
+
 
 }

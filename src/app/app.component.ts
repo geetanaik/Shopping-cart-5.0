@@ -3,6 +3,7 @@ import { Customer } from './model/customer';
 import { ProductService } from './service/product-service';
 import { Observable } from "rxjs/Observable";
 import { Products } from './model/product';
+import { AppResponse } from './model/app-response';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit {
   public message:string ="Hey I am learning Angular2";
   public num:number=1;  
   public customer:Customer;  
-
   public productList:Products[];
+
+  public appMessage:string="";
  
   //Dependency injection is Angular2
   public constructor(private productService:ProductService){
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit {
         sum=sum*p;
       }
       this.num=sum; 
-      this.cool();
+     // this.cool();
       this.customer=new Customer("Nagendra","nagen@gmail.com","+18282722",37,true);
       //Write code to fecth data from node.js
       let products:Observable<Products[]>=this.productService.loadProducts();
@@ -46,8 +48,30 @@ export class AppComponent implements OnInit {
 
   }
 
-  public cool():void {
-    console.log(")@)@)@hey I am cool----0909");
+  //Products is data type class type which is your model
+  public deleteProduct(product:Products):void {
+    console.log("delete product!!!!!!!!!!!!!!");
+    console.log(product);
+    console.log(this.productList );
+    console.log("------------------------");
+    //this.productList =this.productList.filter(function(item){
+      //  return item.pid!=product.pid;
+    //});
+    ///this.productList =this.productList.filter((item) => {
+     // return item.pid!=product.pid
+    //});
+    let responseFromServer:Observable<AppResponse>=this.productService.deleteProductByPid(product._id);
+    responseFromServer.subscribe((response)=> {
+      console.log(response);
+      if(response.status=="success") {
+            this.productList =this.productList.filter((item) =>item.pid!=product.pid);
+            this.appMessage=response.message;
+      }else{
+        this.appMessage=response.message;
+      }
+    });
+     console.log(this.productList );
+    
   }
   
 }
