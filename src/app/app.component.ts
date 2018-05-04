@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Customer } from './model/customer';
 import { ProductService } from './service/product-service';
 import { Observable } from "rxjs/Observable";
@@ -11,12 +11,13 @@ import { AppResponse } from './model/app-response';
 })
 export class AppComponent implements OnInit {
 
-  title = 'app';
-  public message:string ="Hey I am learning Angular2";
-  public num:number=1;  
-  public customer:Customer;  
-  public productList:Products[];
+  //This is referring my pupop model component
+  @ViewChild('productModel') tproductModel:ElementRef;
 
+  public product:Products=new Products();
+
+  title = 'app';
+  public productList:Products[];
   public appMessage:string="";
  
   //Dependency injection is Angular2
@@ -26,14 +27,6 @@ export class AppComponent implements OnInit {
   //This will be automatically called when component is instantiating
   ngOnInit(): void{
        console.log("_@_@_@ngOnInit is called!!!!!!!!");
-      let x=5;
-      let sum=1;
-      for(let p=2;p<=x;p++){
-        sum=sum*p;
-      }
-      this.num=sum; 
-     // this.cool();
-      this.customer=new Customer("Nagendra","nagen@gmail.com","+18282722",37,true);
       //Write code to fecth data from node.js
       let products:Observable<Products[]>=this.productService.loadProducts();
       console.log(products);
@@ -72,6 +65,39 @@ export class AppComponent implements OnInit {
     });
      console.log(this.productList );
     
+  }
+
+  public openAddProduct():void{
+    //code to clear old data
+    this.product=new Products();
+    console.log("@)#)#)#)#)#)##(#(#(");
+       ///alert("Yeap");
+    //This the angular2 code to open the model
+    //this.tproductModel.nativeElement
+    //document.getElementById("tproductModel").style
+    this.tproductModel.nativeElement.className = 'modal show';
+  }
+
+  public addProduct():void{
+    console.log(this.product);
+    alert("Product is added!!!!!!!!!!!!!!!!!!");
+    let responseFromServer:Observable<AppResponse>=this.productService.addProduct(this.product);
+    console.log(responseFromServer);
+    responseFromServer.subscribe((response)=> {
+      console.log(response);
+      if(response.status=="success") {
+             this.appMessage=response.message;
+            //code to add into the table client side
+            this.productList.push(this.product);
+      }else{
+        this.appMessage=response.message;
+      }
+    });
+    this.tproductModel.nativeElement.className = 'modal hide';
+  }
+
+  public closePopup():void {
+    this.tproductModel.nativeElement.className = 'modal hide';
   }
   
 }
