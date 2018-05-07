@@ -5,14 +5,30 @@ import { HttpModule } from "@angular/http";
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
+
 import { ProductService } from './service/product-service';
+import { AuthComponent } from './components/auth/auth.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CustomersComponent } from './components/customers/customers.component';
+import { StorefrontComponent } from './components/storefront/storefront.component';
+import { AuthService } from './service/auth.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    AuthComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductsComponent,
+    CartComponent,
+    CheckoutComponent,
+    CustomersComponent,
+    StorefrontComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +36,7 @@ import { ProductService } from './service/product-service';
     FormsModule,
     HttpModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

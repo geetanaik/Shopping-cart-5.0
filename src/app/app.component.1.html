@@ -1,0 +1,148 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  
+  <header style="background-color: aqua">
+    <h1>@Welcome to Angular2</h1>
+ </header>
+ <img height="150" alt="Angular Logo" src="../assets/img/food.png">
+ <a href="javascript:" (click)="openAddProduct()">
+     <img  style="margin-left: 150px;" alt="Angular Logo" src="../assets/img/add-product.png">
+</a>
+ 
+   <div style="float: left;">
+   <h3>Product List</h3>
+   <button type="button"  class="btn btn-primary btn-md">Delete</button>
+   </div>
+   <br/>
+   <span style="color:blue;font-size: 16px;">{{appMessage}}</span>
+   <hr/>
+  <table border="1" id="customers">
+    <tr>
+      <th>PID :</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Store</th>
+        <th>Mfg</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+    
+  <tbody  id="myContents">
+    <tr *ngFor="let product of productList">
+      <td>&nbsp;{{product.pid}}</td>
+      <td>&nbsp;{{product.name}}</td>
+      <td>&nbsp;<img src="{{product.image}}" height="100px;"/></td>
+      <td>&nbsp;{{product.price}}</td>
+      <td>&nbsp;{{product.store}}</td>
+      <td>&nbsp;{{product.mfg}}</td>
+      <td>&nbsp;{{product.category}}</td>
+      <td>&nbsp;
+          <a href="javascript:" (click)="deleteProduct(product)">
+            <img width="100" alt="Angular Logo" src="../assets/img/delete.png" style="height: 50px;">
+          </a>
+    
+      </td>
+      
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+   
+    
+    </tbody>
+  </table>
+  <br/>
+</div>
+<div style="height: 20px;background-color: aqua">
+</div>
+ 
+
+
+ <!-- Modal -->
+ <form  id="productForm"  >
+  <div #productModel class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="background-image: url('../assets/img/backgrounds.jpg');">
+        <div class="modal-header"  style="background-color: #37abf2;height: 35px; ">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <img src="../assets/img/user-icon.png" width="30px;"/>
+              <p style="display: inline;margin-left: 20px;">   <span style="font-weight: bold;" id="name"></span></p>
+        </div>
+        <div class="bloading">
+        <div class="modal-body">
+         <span style="color:red;font-size: 15px;" id="ErrorMessage"></span>
+        <div class="form-group">
+           PID   :   <span style="font-weight: bold;color:red;">*</span>
+          <input type="text" class="form-control" name="pid" [(ngModel)]="product.pid"/>
+          </div>
+          
+          <div class="form-group">
+            Name   :   <span style="font-weight: bold;color:red;">*</span>
+           <input type="text" class="form-control" name="name" [(ngModel)]="product.name"/>
+           </div>
+          
+            <div class="form-group">
+         Price   :   <span style="font-weight: bold;color:red;">*</span>
+          <input type="text" class="form-control" name="price" [(ngModel)]="product.price"/>
+          </div>
+        
+        
+            <div class="form-group">
+         image   :   <span style="font-weight: bold;color:red;">*</span>
+          <input type="text" class="form-control" name="image" [(ngModel)]="product.image"/>
+          </div>
+           
+           
+          <div class="form-group">
+            store   :   <span style="font-weight: bold;color:red;">*</span>
+             <input type="text" class="form-control" [(ngModel)]="product.store" name="store"/>
+             </div>
+
+             <div class="form-group">
+              mfg   :   <span style="font-weight: bold;color:red;">*</span>
+               <input type="text" class="form-control" [(ngModel)]="product.mfg" name="mfg"/>
+               </div>
+
+               <div class="form-group">
+                <label id="stream">Category:</label>
+                <select  class="form-control" [(ngModel)]="product.category" name="category">
+                    <option>Cosmetic</option>	
+                    <option>Shoose</option>	
+                </select>
+                </div>
+        
+       
+        </div>
+        <div class="modal-footer">
+            <input type="button" value="Close"  class="mc-btn btn-style-1" (click)="closePopup();"/>
+            <input type="button"  value="Add Product" class="mc-btn btn-style-1" id="addProduct" (click)="addProduct();"/>
+        </div>
+      </div>
+  </div>
+    </div>
+  </div>
+  </form>
+
+
+
+
