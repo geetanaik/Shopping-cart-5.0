@@ -21,7 +21,7 @@ export class ProductService{
 
     public loadProducts() : Observable<Products[]> {
         //step is normal response
-        let step=this.http.get("http://localhost:3000/v1/products");
+        let step=this.http.get("http://localhost:444/v1/products");
         //Now we have to read response as json
         //jsonData hold arary of JavaScript object
         let jsonData=step.map((response) => response.json());
@@ -50,7 +50,7 @@ export class ProductService{
      public deleteProductByPid(mid:string) : Observable<AppResponse> {
         //step is normal response
         console.log("mid  = "+mid);
-        let step=this.http.delete("http://localhost:3000/v1/products/"+mid);
+        let step=this.http.delete("http://localhost:444/v1/products/"+mid);
         //Now we have to read response as json
         //jsonData hold arary of JavaScript object
         //var data={status:"success",message:"Hey! your profile has been deleted successfully into the database!!!!!!!!!!!!!!!"};
@@ -78,7 +78,7 @@ export class ProductService{
         // first - URI
         //second //product =body
         //third  options =header
-        let step=this.http.post("http://localhost:3000/v1/products",product,options);
+        let step=this.http.post("http://localhost:444/v1/products",product,options);
         //Now we have to read response as json
         //jsonData hold arary of JavaScript object
         //var data={status:"success",message:"Hey! your profile has been deleted successfully into the database!!!!!!!!!!!!!!!"};

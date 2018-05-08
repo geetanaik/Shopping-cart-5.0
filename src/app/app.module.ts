@@ -16,6 +16,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { StorefrontComponent } from './components/storefront/storefront.component';
 import { AuthService } from './service/auth.service';
+import { AppRoutingModule } from './app.routing';
+import { AccountComponent } from './components/account/account.component';
 
 
 @NgModule({
@@ -28,13 +30,15 @@ import { AuthService } from './service/auth.service';
     CartComponent,
     CheckoutComponent,
     CustomersComponent,
-    StorefrontComponent
+    StorefrontComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule
   ],
   providers: [ProductService,AuthService],
   bootstrap: [AppComponent]

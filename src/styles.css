@@ -29,6 +29,9 @@
     color: #ffc107;
   }
   .App-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     height: 30px;
     padding: 2px;
     background-color:   #046dc9;
@@ -39,10 +42,11 @@
   
   .App-title {
     display: inline;
+    font-size: 22px;
   }
   
   .Greeting-title {
-    font-size: 1.5em;
+    font-size: 18px;
     color:#30af9e;
     margin-left: 100px;
    }

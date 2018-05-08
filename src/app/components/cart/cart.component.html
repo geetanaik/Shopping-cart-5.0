@@ -1,3 +1,41 @@
-<p>
-  cart works!
-</p>
+<div style="margin-top: 30px;">
+  <h5>Shopping Cart</h5>
+  <img src="../../../assets/img/app-cart.png">
+  <hr/>
+  <div class="cart">
+      <div class="panel panel-default">
+          <div class="panel-body">
+         
+                  <div class="cart__body">
+                    <div class="cart-item">
+                      <div style="display: inline;">
+                          <button class="btn btn-danger btn-xs" (click)="click();">X</button>
+                          <span class="cart-item__name">Mango</span>
+                      </div>
+                      <div class="cart-item__price">42 $</div>
+                   
+                  </div>
+                  <div class="cart-item">
+                    <div>
+                        <button class="btn btn-danger btn-xs" (click)="clicked();">X</button>
+                        <span class="cart-item__name">Apple</span>
+                    </div>
+                    <div class="cart-item__price">100 $
+                    </div>
+                 
+                </div>
+                  </div>
+                 <div class="alert alert-info">Cart is empty</div>
+               <hr/>
+               <div class="checkout">
+             
+                   <button type="button"  class="btn btn-warning">Checkout</button>
+                    <span class="cart__total">   
+                          Total: 1000 $
+                   </span>                  
+               </div> 
+             
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="login">
-  <img src="../../assets/img/affiliates.png" style="height:150px;" alt=""/>
+  <img src="../../assets/img/affiliates.png" style="height:80px;" alt=""/>
    <hr/>
     <span class="error-message">{{message}}</span>
    <hr/>
@@ -12,6 +12,8 @@
          <input type="password" class="form-control" name="password"  [(ngModel)]="user.password"/>
      </div>
 
-     <button type="button" (click)="authUser();" class="btn btn-primary btn-md">Submit</button>
-     <br/><br/><br/><br/><br/><br/><br/>
+     <button type="button" (click)="authUser();" class="btn btn-primary btn-md">Login</button>
+     <button type="button" (click)="authUser();" class="btn btn-success btn-md">SignUp</button>
+     <button type="button" (click)="resetPassword();" class="btn btn-info btn-md">Reset Password</button>
+     <br/><br/><br/><br/>
 </div>
