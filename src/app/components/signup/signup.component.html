@@ -1,0 +1,36 @@
+<div class="login">
+    <h5> Please Signup here</h5>
+    <img src="../../assets/img/register.png" style="height:80px;" alt=""/>
+     <!-- <hr/>
+      <span class="error-message">{{message}}</span> -->
+     <hr/>
+       <div class="form-group">
+       <label for="email">Usename:</label>
+           <input type="text"  class="form-control" name="username"  [(ngModel)]="signup.username"/>
+       </div>   
+       <div class="form-group">
+            <label for="pwd">Password:</label>
+           <input type="password" class="form-control" name="password"  [(ngModel)]="signup.password"/>
+       </div>
+       <div class="form-group">
+            <label for="email">Email:</label>
+           <input type="email" class="form-control" name="email"  [(ngModel)]="signup.email"/>
+       </div>
+       
+       <div class="form-group">
+            <label for="gender">Gender:</label>
+           <select class="form-control" name="Gender"  [(ngModel)]="signup.Gender"  style="width:180px;">
+            <option> Male </option>
+            <option>Female</option>
+       </select>
+       </div> 
+
+       <div class="form-group">
+            <label for="photo">Photo:</label>
+           <input type="text" class="form-control" name="photo"  [(ngModel)]="signup.photo"/>
+       </div>
+       
+       <button type="button" (click)="SignupUser();" class="btn btn-success btn-md">Sign-Up</button>
+      <br/><br/><br/><br/>
+  </div>
+  

@@ -21,6 +21,7 @@ import { AccountComponent } from './components/account/account.component';
 import { DataService } from './service/data.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AddProductPopup} from './components/popup/addproduct.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {AddProductPopup} from './components/popup/addproduct.component';
     CustomersComponent,
     StorefrontComponent,
     AccountComponent,
-    AddProductPopup
+    AddProductPopup,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
