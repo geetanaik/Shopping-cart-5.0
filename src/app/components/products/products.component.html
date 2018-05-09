@@ -26,10 +26,11 @@
   </thead>
   <tbody>
    
-    <tr *ngFor="let prod of productList">
-     <td>1</td>
+    <tr *ngFor="let prod of productList;let i=index">
+     <td>{{i+1}}</td>
      <td>
-     <button (click)="addProductToCart(prod);" class='btn btn-danger  btn-sm'>Add To Cart</button>
+       
+     <button (click)="addProductToCart(prod);" [ngClass]="inCartProduct(prod)? 'btn btn-danger' : 'btn btn-primary'">{{inCartProduct(prod) ? 'In Cart' : 'Add to cart'}}</button>
       
         &nbsp;&nbsp;
                       {{prod.pid}}
@@ -39,7 +40,7 @@
       <td>{{prod.price}}</td>
       <td style="text-align: center"><img style="height: 100px;" src="{{prod.image}}" alt=""/></td>
       <td>
-      <button type="button"  class="btn btn-primary">Delete</button>
+      <button type="button" (click)="deleteProduct(prod);"  class="btn btn-primary">Delete</button>
       <button type="button"  class="btn btn-info">Edit</button>
         &nbsp;
       </td>

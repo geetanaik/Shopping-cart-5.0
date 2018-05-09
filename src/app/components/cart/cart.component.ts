@@ -16,6 +16,16 @@ export class CartComponent implements OnInit {
 
   }
 
+  
+  public inCartProduct(cproduct:Products):boolean {
+    var index=this.productsInCart.findIndex(item => item._id === cproduct._id);
+    if(index==-1){
+       return false;
+    }else{
+       return true;
+    }
+  }
+
   public addProductToCart(cproduct:Products) {
     this.productsInCart.push(cproduct);
     this.total=this.total+cproduct.price;

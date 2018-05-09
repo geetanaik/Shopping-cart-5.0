@@ -11,9 +11,7 @@ import { CartComponent } from '../cart/cart.component';
   })
 export class ProductsComponent implements OnInit ,AfterViewInit{
 
-
   //@ViewChild(CartComponent)  cart;
-  
    @ViewChild(CartComponent) 
    private cart:CartComponent;
   
@@ -63,6 +61,7 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
       if(response.status=="success") {
             this.productList =this.productList.filter((item) =>item.pid!=product.pid);
             this.appMessage=response.message;
+            this.cart.removeProductFromCart(product);
       }else{
         this.appMessage=response.message;
       }
@@ -111,5 +110,8 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
       this.cart.addProductToCart(product);
   }
 
+  public inCartProduct(product:Products) :boolean {
+    return this.cart.inCartProduct(product);
+}
 
 }

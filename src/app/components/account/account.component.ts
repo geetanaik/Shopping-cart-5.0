@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-account',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private dataService:DataService) {
 
   }
 
@@ -19,6 +20,7 @@ export class AccountComponent implements OnInit {
     //if you want to perform
     //some logic like want to save
     //logout time into the database
+    this.dataService.changeMessage("...");
     this.router.navigate(['']);
   }
 

@@ -4,6 +4,7 @@ import { AuthService } from '../../service/auth.service';
 import { Observable } from "rxjs/Observable";
 import { AppResponse } from "../../model/app-response";
 import {Router} from "@angular/router";
+import { DataService } from '../../service/data.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -15,11 +16,12 @@ export class AuthComponent implements OnInit {
 
   public message:string="";
 
-  constructor(private authService:AuthService,private router: Router) {
+  constructor(private authService:AuthService,private router: Router,private dataService:DataService) {
 
   }
 
   ngOnInit() {
+    this.dataService.welcomeMessage.subscribe(message => this.message = message)
   }
 
   authUser() :void{
@@ -28,6 +30,7 @@ export class AuthComponent implements OnInit {
    responseData.subscribe(data=>{
       //code to move to another screen
       if(data.status=="pass"){
+        this.dataService.changeMessage("Hello Mr. "+this.user.username);
         this.router.navigate(['products']);
       }else{
         this.message= data.message;

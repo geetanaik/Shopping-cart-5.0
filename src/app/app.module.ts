@@ -18,6 +18,7 @@ import { StorefrontComponent } from './components/storefront/storefront.componen
 import { AuthService } from './service/auth.service';
 import { AppRoutingModule } from './app.routing';
 import { AccountComponent } from './components/account/account.component';
+import { DataService } from './service/data.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { AccountComponent } from './components/account/account.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ProductService,AuthService],
+  providers: [ProductService,AuthService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
