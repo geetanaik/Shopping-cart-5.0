@@ -7,31 +7,23 @@
           <div class="panel-body">
          
                   <div class="cart__body">
-                    <div class="cart-item">
+                    <div class="cart-item" *ngFor="let prod of productsInCart">
                       <div style="display: inline;">
-                          <button class="btn btn-danger btn-xs" (click)="click();">X</button>
-                          <span class="cart-item__name">Mango</span>
+                          <button class="btn btn-danger btn-xs" (click)="removeProductFromCart(prod);">X</button>
+                          <span class="cart-item__name">{{prod.name}}</span>
                       </div>
-                      <div class="cart-item__price">42 $</div>
+                      <div class="cart-item__price">{{prod.price}} $</div>
                    
                   </div>
-                  <div class="cart-item">
-                    <div>
-                        <button class="btn btn-danger btn-xs" (click)="clicked();">X</button>
-                        <span class="cart-item__name">Apple</span>
-                    </div>
-                    <div class="cart-item__price">100 $
-                    </div>
                  
-                </div>
                   </div>
-                 <div class="alert alert-info">Cart is empty</div>
+                 <div class="alert alert-info" *ngIf="productsInCart.length==0">Cart is empty</div>
                <hr/>
-               <div class="checkout">
+               <div class="checkout" *ngIf="productsInCart.length>0">
              
                    <button type="button"  class="btn btn-warning">Checkout</button>
                     <span class="cart__total">   
-                          Total: 1000 $
+                          Total: {{total}} $
                    </span>                  
                </div> 
              

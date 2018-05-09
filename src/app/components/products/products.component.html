@@ -29,7 +29,7 @@
     <tr *ngFor="let prod of productList">
      <td>1</td>
      <td>
-     <button class='btn btn-danger  btn-sm'>Add To Cart</button>
+     <button (click)="addProductToCart(prod);" class='btn btn-danger  btn-sm'>Add To Cart</button>
       
         &nbsp;&nbsp;
                       {{prod.pid}}

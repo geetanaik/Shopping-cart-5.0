@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,AfterViewInit } from '@angular/core';
 import { ProductService } from '../../service/product-service';
 import { Products } from '../../model/product';
 import { Observable } from "rxjs/Observable";
 import { AppResponse } from '../../model/app-response';
+import { CartComponent } from '../cart/cart.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  directives:[CartComponent]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit ,AfterViewInit{
 
+
+  //@ViewChild(CartComponent)  cart;
+  
+   @ViewChild(CartComponent) 
+   private cart:CartComponent;
+  
   public product:Products=new Products();
 
   title = 'app';
@@ -32,6 +40,10 @@ export class ProductsComponent implements OnInit {
       this.productList=results;
     });
 
+  }
+
+  ngAfterViewInit(){
+    console.log("_@_@)ngAfterViewInit@)@");
   }
 
   //Products is data type class type which is your model
@@ -91,6 +103,13 @@ export class ProductsComponent implements OnInit {
 
   public closePopup():void {
    // this.tproductModel.nativeElement.className = 'modal hide';
+  }
+
+  public addProductToCart(product:Products) {
+      console.log(")#)#)#)#");
+      console.log(product);
+      console.log(this.cart);
+      this.cart.addProductToCart(product);
   }
 
 
