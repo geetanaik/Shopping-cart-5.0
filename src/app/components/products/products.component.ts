@@ -99,6 +99,10 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
     //this.tproductModel.nativeElement.className = 'modal hide';
   }
 
+  public editProduct() :void {
+      alert(")@)#)#");
+  }
+
   public closePopup():void {
    // this.tproductModel.nativeElement.className = 'modal hide';
   }

@@ -19,7 +19,8 @@ import { AuthService } from './service/auth.service';
 import { AppRoutingModule } from './app.routing';
 import { AccountComponent } from './components/account/account.component';
 import { DataService } from './service/data.service';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AddProductPopup} from './components/popup/addproduct.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,16 @@ import { DataService } from './service/data.service';
     CheckoutComponent,
     CustomersComponent,
     StorefrontComponent,
-    AccountComponent
+    AccountComponent,
+    AddProductPopup
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [ProductService,AuthService,DataService],
   bootstrap: [AppComponent]
