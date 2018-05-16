@@ -1,5 +1,3 @@
-
-
 <img src="../../../assets/img/new-gif-blinking-image-6.gif" style="height: 80px;" alt=""/>
 <img src="../../../assets/img/products.jpg" style="height: 180px;" alt=""/>
 <img src="../../../assets/img/colorful_google_tees.png" style="height: 180px;" alt=""/>
@@ -8,7 +6,11 @@
 </app-account>
 
  <hr/><hr/>
- <add-product></add-product>
+ <!--
+   this.notify.emit(product);
+ -->
+ <add-product  (notify)="addProductToParent($event)"></add-product>
+
  <div class="row">
     <div class="col-sm-10 col-md-6 col-lg-9">
 <h5>Product Available in store!</h5>
@@ -30,8 +32,14 @@
     <tr *ngFor="let prod of productList;let i=index">
      <td>{{i+1}}</td>
      <td>
-       
-     <button (click)="addProductToCart(prod);" [ngClass]="inCartProduct(prod)? 'btn btn-danger' : 'btn btn-primary'">{{inCartProduct(prod) ? 'In Cart' : 'Add to cart'}}</button>
+ 
+      
+ <!-- ngClass for dynamic contents display depending on the functions data return here in this case 
+      inCartProductToCart(prod) if gives true/1 then danger else primary-->     
+     <button (click)="addProductToCart(prod);" 
+     [ngClass]="inCartProduct(prod)? 'btn btn-danger' : 'btn btn-primary'"> 
+     {{inCartProduct(prod) ? 'In Cart' : 'Add to cart'}}
+    </button>
       
         &nbsp;&nbsp;
                       {{prod.pid}}
@@ -42,7 +50,7 @@
       <td style="text-align: center"><img style="height: 100px;" src="{{prod.image}}" alt=""/></td>
       <td>
       <button type="button" (click)="deleteProduct(prod);"  class="btn btn-primary">Delete</button>
-      <button type="button" (click)="editProductng (prod);"  class="btn btn-info">Edit</button>
+      <edit-product [eproduct]="prod" (notify)="updateProductToParent($event)"></edit-product>
         &nbsp;
       </td>
  </tr>
@@ -76,4 +84,3 @@
 </div>
 </div>
 <br/>
-

@@ -22,6 +22,9 @@ import { DataService } from './service/data.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AddProductPopup} from './components/popup/addproduct.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ProfilesCompoment } from './components/profiles/profiles.component';
+import { SignUpService } from './service/signup.service';
+import { EditProduct } from './components/popup/editproduct.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { SignupComponent } from './components/signup/signup.component';
     AccountComponent,
     AddProductPopup,
     SignupComponent,
+    ProfilesCompoment,
+    EditProduct,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ import { SignupComponent } from './components/signup/signup.component';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [ProductService,AuthService,DataService],
+  providers: [ProductService,AuthService,DataService,SignUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

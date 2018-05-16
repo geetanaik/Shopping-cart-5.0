@@ -1,0 +1,61 @@
+<div class="row">
+        <div class="col-sm-10 col-md-6 col-lg-9">
+<h5>Profiles Available in store!</h5>
+<span class="error-message">{{message}}</span>
+
+<table class="table table-bordered">
+        <thead  style="background-color:#17a2b8;color:white;font-size: 14px;font-weight: normal !important">
+          <tr>
+          <th>SNo</th>
+            <th>username  </th>
+            <th>password</th>
+            <th>email</th>
+            <th>gender</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          <tr *ngFor="let profile of profileList;let i=index">
+           <td>{{i+1}}</td>
+           <td>{{profile.username}}</td>
+            <td>{{profile.password}}</td>
+            <td>{{profile.email}}</td>
+            <td>{{profile.gender}}</td>
+            <td style="text-align: center"><img style="height: 80px;" src="{{profile.photo}}" alt=""/></td>
+            <td>
+            <button type="button" (click)="deleteProfile(profile);"  class="btn btn-primary">Delete</button>
+            <button type="button" (click)="editProfile(profile);"  class="btn btn-info">Edit</button>
+
+            </td>
+       </tr>
+     
+          <tr id="12P">
+          <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        
+       </tr>
+       <tr  id="13P">
+       <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          
+            <td>&nbsp;</td>
+        
+       </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="col-sm-2 col-md-6 col-lg-3">
+            <app-cart></app-cart>
+        </div>
+      </div>
+     

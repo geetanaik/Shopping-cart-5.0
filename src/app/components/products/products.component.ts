@@ -11,7 +11,8 @@ import { CartComponent } from '../cart/cart.component';
   })
 export class ProductsComponent implements OnInit ,AfterViewInit{
 
-  //@ViewChild(CartComponent)  cart;
+  //@ViewChild(CartComponent)  cart; this helps us to access cart compoenent.
+  // we are not using @input/output as they give access to one object only not entire component.
    @ViewChild(CartComponent) 
    private cart:CartComponent;
   
@@ -38,7 +39,19 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
     });
 
   }
+  
 
+  //  /* here is the function in order to fetch product passed by popup with 
+  //  * notify emit. So notify.emit is declared in addproduct.ts file which then emits notification to product.html 
+  //  * which has this method declared and it points to function written in product.ts
+  //  *
+  //  * /
+   
+   public addProductToParent(product:Products): void{
+    this.productList.push(product);
+
+
+   } 
   ngAfterViewInit(){
     console.log("_@_@)ngAfterViewInit@)@");
   }
@@ -81,6 +94,11 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
     //this.tproductModel.nativeElement.className = 'modal show';
   }
 
+
+
+
+
+
   public addProduct():void{
     console.log(this.product);
     alert("Product is added!!!!!!!!!!!!!!!!!!");
@@ -107,6 +125,12 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
    // this.tproductModel.nativeElement.className = 'modal hide';
   }
 
+/* below method is to add a product to cart now, this action happened in product page/component and we need to 
+*show this in cart page/component. hence we come here in TS/contorller and tell controller to go to method which is present
+*inside cart.addProductToCart(). this can be done coz of  @viewchild
+*/
+
+
   public addProductToCart(product:Products) {
       console.log(")#)#)#)#");
       console.log(product);
@@ -117,5 +141,16 @@ export class ProductsComponent implements OnInit ,AfterViewInit{
   public inCartProduct(product:Products) :boolean {
     return this.cart.inCartProduct(product);
 }
+
+
+
+public updateProductToParent(uproduct:Products) :void {
+         //update the data into the product list only 
+         //no  rest call ....
+        let index=this.productList.findIndex(item => item._id === uproduct._id);
+        console.log(")))index--- ... "+index);
+        this.productList[index]= uproduct; 
+     }
+  
 
 }

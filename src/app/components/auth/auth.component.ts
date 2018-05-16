@@ -38,4 +38,14 @@ export class AuthComponent implements OnInit {
    });
   
   }
+
+  openSignupForm(){
+   this.router.navigate(['signup']);
+
+  }
+
+  showProfiles(){
+   this.router.navigate(['profiles']);
+    
+  }
 }

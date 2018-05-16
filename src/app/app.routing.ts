@@ -3,6 +3,9 @@ import { RouterModule } from "@angular/router";
 import { AuthComponent } from "./components/auth/auth.component";
 import { ProductsComponent } from "./components/products/products.component";
 import { SignupComponent } from "./components/signup/signup.component";
+import { ProfilesCompoment } from "./components/profiles/profiles.component";
+
+
 
 @NgModule({
     exports: [RouterModule],
@@ -13,10 +16,17 @@ import { SignupComponent } from "./components/signup/signup.component";
                 path: "products"
             },
             {
-              component: SignupComponent,
+                component: SignupComponent,
                  path: "signup"   //url pattern
             },
            
+             {
+                component: ProfilesCompoment,
+                path:'profiles'
+
+             },
+
+
             {
                 component: AuthComponent,
                 path: "**"

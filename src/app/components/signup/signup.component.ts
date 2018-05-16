@@ -34,6 +34,13 @@ export class SignupComponent implements OnInit {
    console.log(this.signup);
    
    //now call RestAPI calling function here
+   let temp:Observable<AppResponse>=this.authService.signupUser(this.signup);
+   temp.subscribe(data=>{
+
+    let msg=data.message;
+    console.log(msg);
+    this.router.navigate(['auth']);
+   });
    
   
   }

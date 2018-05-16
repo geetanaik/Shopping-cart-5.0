@@ -10,5 +10,6 @@ export class SignUp{
     public email:string;
     public gender:string;
     public photo:string;
+    public _id:string;
 
 }
