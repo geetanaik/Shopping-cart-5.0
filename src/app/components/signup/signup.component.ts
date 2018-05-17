@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.welcomeMessage.subscribe(message => this.message = message)
+   // this.dataService.welcomeMessage.subscribe(message => this.message = message)
   }
   /**
    * this ,ethod ll b called by HTML when user click on signup button

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../service/data.service';
+import { SignUp } from '../../model/signup.model';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,22 @@ import { DataService } from '../../service/data.service';
 })
 export class HeaderComponent implements OnInit {
 
+
   public welcomeMessage:string;
+  public signup:SignUp;
 
   constructor(private router: Router, private dataService: DataService) {
 
   }
 
   ngOnInit() {
-    this.dataService.welcomeMessage.subscribe(message => this.welcomeMessage = message);
+   // this.dataService.welcomeMessage.subscribe(message => this.welcomeMessage = message);
+  
+    this.dataService.welcomeMessage.subscribe(signup => {
+      this.signup = signup;
+    });
+
+         
   }
 
   public logout() :void {

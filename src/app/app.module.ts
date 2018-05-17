@@ -25,6 +25,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProfilesCompoment } from './components/profiles/profiles.component';
 import { SignUpService } from './service/signup.service';
 import { EditProduct } from './components/popup/editproduct.component';
+import { CHidden } from '../directive/chidden.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditProduct } from './components/popup/editproduct.component';
     SignupComponent,
     ProfilesCompoment,
     EditProduct,
+    CHidden,
   ],
   imports: [
     BrowserModule,

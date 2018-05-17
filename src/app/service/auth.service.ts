@@ -19,7 +19,8 @@ export class AuthService {
       * @param mid mongoid given to the added product
       * by the mongodb database
       */
-     public authUser(user:User) : Observable<AppResponse> {
+     //public authUser(user:User) : Observable<AppResponse> {
+      public authUser(user:User) : Observable<SignUp>{ 
       //step is normal response
       //console.log("mid  = "+mid);
       console.log("_@_@_@Uploading produc data!");
