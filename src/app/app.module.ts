@@ -26,6 +26,9 @@ import { ProfilesCompoment } from './components/profiles/profiles.component';
 import { SignUpService } from './service/signup.service';
 import { EditProduct } from './components/popup/editproduct.component';
 import { CHidden } from '../directive/chidden.directive';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { AuthGuard } from './components/auth/auth-guard';
+
 
 @NgModule({
   declarations: [
@@ -51,9 +54,10 @@ import { CHidden } from '../directive/chidden.directive';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    StorageServiceModule
   ],
-  providers: [ProductService,AuthService,DataService,SignUpService],
+  providers: [ProductService,AuthService,DataService,SignUpService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

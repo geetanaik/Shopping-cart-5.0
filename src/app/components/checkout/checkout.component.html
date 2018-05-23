@@ -1,3 +1,57 @@
-<p>
+<!-- <p>
   checkout works!
-</p>
+</p> -->
+<head>
+<link href="/path/to/item-quantity-dropdown.min.css" rel="stylesheet">
+
+</head>
+
+
+
+
+<div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-9">
+<h5>Product Available for checkout</h5>
+         
+<table class="table table-bordered">
+  <thead  style="background-color:#17a2b8;color:white;font-size: 14px;font-weight: normal !important">
+    <tr>
+    <th>SNo</th>
+      <!-- <th>Pid</th> -->
+      <th>Details</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>TotalPrice</th>     
+    </tr>
+  </thead>
+  <tbody>
+   
+    <tr *ngFor="let prod of checkoutProductList;let i=index">
+     <td>{{i+1}}</td>
+      <td>{{prod.name}} <img style="height: 100px;" src="{{prod.image}}" alt=""/></td>
+      <td>{{prod.category}}</td>
+     <td>{{prod.price}}</td>
+     <td> 
+          <input type="number" ng-init="value" ng-model="value"  min="0" max="99" required>
+        {{value}}
+      <!-- <input type="number" name="input" [ngModel]="value" min="0" max="99" required/> -->
+           {{value * prod.price}}
+            <!-- <button type="button" class="btn btn-primary" (click)="prodUpdate(value);">upd</button> -->
+        
+      </td>  
+
+     <td>
+        
+
+     </td> 
+ </tr>
+
+  
+  </tbody>
+</table>
+</div>
+<div class="col-sm-2 col-md-6 col-lg-3">
+  <app-cart></app-cart>
+</div>
+

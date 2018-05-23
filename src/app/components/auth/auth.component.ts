@@ -49,14 +49,35 @@ export class AuthComponent implements OnInit {
     responseData.subscribe(signup=>{
        //code to move to another screen
        if(signup.status=="pass"){
-         this.dataService.changeMessage(signup);
+         this.dataService.changeMessage(signup); //assigning my data to dataService.
+         console.log("signup.token coming from server =  "+signup.token); //printing token
+        //Here we want to store usenrame , role and token into the local storage
+        //so that all these information should be available through the application
+        var currentUser={username:signup.username,role:signup.role,token:signup.token};
+        //adding information into the local storage
+        //Below is JSON string data
+        //{"username":"nagendra","role":"admin","token":"8H*#&#&#&#^&#^#^#^#^"}
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        
+        this.authService.token=signup.token;    //we are also keeping it in another global variable to avoid accessing 
+        //all the time from local Storage.
+
+
          this.router.navigate(['products']);
        }else{
+        localStorage.removeItem('currentUser');   //if autherization didnt go through remove user dtails.
          this.message= signup.status;
        }  
     });
    
    }
+
+  public logout(): void {
+    // clear token remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['auth']);
+  }
+
 
   openSignupForm(){
    this.router.navigate(['signup']);

@@ -1,21 +1,25 @@
 import { Injectable } from "@angular/core";
 import { SignUp } from "../model/signup.model";
 import { Observable } from "rxjs/Observable";
-import { Http } from "@angular/http";
+import { Http,Headers } from "@angular/http";
 import { AppResponse } from "../model/app-response";
 import { AppSettings } from "../config/app.settings";
+import { AuthService } from "./auth.service";
 
 
 @Injectable()
 export class SignUpService{
     
-    constructor(private http: Http){
+    constructor(private http: Http,private authService:AuthService){
     }
    
  public loadProfiles(): Observable<SignUp[]> {
   
 
-  let step=this.http.get("http://132.148.156.135:444/api/v1" + "/profiles");
+  // new URL pattern in order to implement Auth/token  let step=this.http.get("http://132.148.156.135:444/api/v1" + "/profiles");
+         var headers: Headers = new Headers({'user-access-token':this.authService.token});
+         let step=this.http.get(AppSettings.API_ENDPOINT+"/profiles",{headers:headers});
+
         let jsonData=step.map((response) => response.json());
         
         //Iterating all the JavaScript Object and converting into
@@ -37,7 +41,10 @@ export class SignUpService{
 
 deleteProfileByMid(mid:string): Observable <AppResponse> {
 
-let step=this.http.delete(AppSettings.API_ENDPOINT+"/profiles/"+mid);
+//new URL pattern to implement Auth/token service  let step=this.http.delete(AppSettings.API_ENDPOINT+"/profiles/"+mid);
+    var headers: Headers = new Headers({'user-access-token':this.authService.token});
+    let step=this.http.get(AppSettings.API_ENDPOINT+"/profiles"+mid,{headers:headers});
+
 
 
 //Now we have to read response as json
