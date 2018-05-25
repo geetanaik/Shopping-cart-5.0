@@ -67,7 +67,7 @@ export class AuthService {
       //second //product =body
       //third  options =header
       //let step=this.http.post(AppSettings.API_ENDPOINT+"/signup",signup,options);
-      let step=this.http.post(AppSettings.AUTH_ENDPOINT+"/auth",signup,options);
+      let step=this.http.post(AppSettings.AUTH_ENDPOINT+"/signup",signup,options);
       //Now we have to read response as json
       //jsonData hold arary of JavaScript object
       //var data={status:"success",message:"Hey! your profile has been deleted successfully into the database!!!!!!!!!!!!!!!"};

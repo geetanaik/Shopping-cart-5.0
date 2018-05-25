@@ -16,42 +16,46 @@
 <table class="table table-bordered">
   <thead  style="background-color:#17a2b8;color:white;font-size: 14px;font-weight: normal !important">
     <tr>
-    <th>SNo</th>
-      <!-- <th>Pid</th> -->
+      <th>SNo</th>
       <th>Details</th>
       <th>Category</th>
       <th>Price</th>
       <th>Quantity</th>
-      <th>TotalPrice</th>     
+      <th>TotalPrice</th>
+      <th>action</th>     
     </tr>
   </thead>
   <tbody>
    
-    <tr *ngFor="let prod of checkoutProductList;let i=index">
+    <tr *ngFor="let cartItem of cartItemList;let i=index">
      <td>{{i+1}}</td>
-      <td>{{prod.name}} <img style="height: 100px;" src="{{prod.image}}" alt=""/></td>
-      <td>{{prod.category}}</td>
-     <td>{{prod.price}}</td>
-     <td> 
-          <input type="number" ng-init="value" ng-model="value"  min="0" max="99" required>
-        {{value}}
-      <!-- <input type="number" name="input" [ngModel]="value" min="0" max="99" required/> -->
-           {{value * prod.price}}
-            <!-- <button type="button" class="btn btn-primary" (click)="prodUpdate(value);">upd</button> -->
-        
-      </td>  
-
-     <td>
-        
-
-     </td> 
+    <td>{{cartItem.product.name}} <img style="height: 100px;" src="{{cartItem.product.image}}" alt=""/></td>
+    <td>{{cartItem.product.category}}</td>
+    <td>{{cartItem.product.price}}</td>
+    <td> 
+        <input type="number"  [(ngModel)]="cartItem.quantity"  default=1 min="1" max="99" required>
+      <!--  {{cartItem.quantity}} --> 
+    </td>  
+    <td>
+      {{cartItem.quantity*cartItem.product.price}} 
+    </td>
+    <td>      
+      <button type="button" class="btn btn-primary" (click)="removecartitem(cartItem);">Remove</button>
+    </td>      
  </tr>
 
+ <td colspan="7">
+  <button type="button" class="btn btn-primary" (click)="proceedToPayment();" >Proceed to payment </button>
+ </td>
+
   
-  </tbody>
+</tbody>
 </table>
 </div>
-<div class="col-sm-2 col-md-6 col-lg-3">
-  <app-cart></app-cart>
+
+<div class="col-sm-2 col-md-6 col-lg-3" style="background-color:darkgray" >
+  <!--here we are calling child order-summery component. now it has a field of product cost. this is addition of product.price*quantity whic is
+        return value of function totalproductcost()-->
+    <order-summary ptotalPrice={{totalproductcost()}}></order-summary>    
 </div>
 

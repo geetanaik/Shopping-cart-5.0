@@ -1,80 +1,9 @@
-// // 
-
-
-
-// import { Component, OnInit,Inject } from '@angular/core';
-// import { Products } from '../../model/product';
-// import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
-// import { PipeResolver } from '@angular/compiler';
-// import { AppGlobal } from '../../config/app.global';
-
-// @Component({
-//   selector: 'app-cart',
-//   templateUrl: './cart.component.html',
-//   styleUrls: ['./cart.component.css']
-// })
-// export class CartComponent implements OnInit {
-//   //creating empty array
-//   private productsInCart:Products[]=[];
-//   public total:number=0;
-
-//   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService) {
-     
-//   }
-
-//   ngOnInit() {
-//      var tt=this.storage.get(AppGlobal.CART_KEY);
-//      if(tt!=null){
-//       this.productsInCart= this.storage.get(AppGlobal.CART_KEY);
-//      } 
-//   }
-
-//   public addProductToCart(cproduct:Products) {
-//     console.log("addProductToCart in cart!");
-//     var cartItemsInSession=this.storage.get(AppGlobal.CART_KEY);
-//     console.log("---- = "+cartItemsInSession);
-    
-//     if(cartItemsInSession==null) {
-//       console.log(cartItemsInSession);
-//       var products=[];
-//       products.push(cproduct);
-//       this.storage.set(AppGlobal.CART_KEY, products);
-//     }else{
-//       console.log(cartItemsInSession);
-//       var index=cartItemsInSession.findIndex(item => item._id === cproduct._id);
-//       if(index===-1)
-//       cartItemsInSession.push(cproduct);
-//       this.storage.set(AppGlobal.CART_KEY, cartItemsInSession);
-//     }
-
-//     this.productsInCart.push(cproduct);
-//     this.total=this.total+cproduct.price;
-//     console.log("Product is added into the cart successfully...........");
-//     console.log(cproduct);
-//   }
-
-//   public removeProductFromCart(cproduct:Products) {
-//     this.total=this.total-cproduct.price;
-//     this.productsInCart=this.productsInCart.filter(item =>item._id!=cproduct._id);
-//   }
-
-    
-//   public inCartProduct(cproduct:Products):boolean {
-//     var index=this.productsInCart.findIndex(item => item._id === cproduct._id);
-//     if(index==-1){
-//        return false;
-//     }else{
-//        return true;
-//     }
-//   }
-// }
-
-
 import { Component, OnInit,Inject } from '@angular/core';
 import { Products } from '../../model/product';
 import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { PipeResolver } from '@angular/compiler';
 import { AppGlobal } from '../../config/app.global';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -86,7 +15,7 @@ export class CartComponent implements OnInit {
   private productsInCart:Products[]=[];
   public total:number=0;
 
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService) {
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService ,private router: Router) {
      
   }
 
@@ -127,18 +56,27 @@ export class CartComponent implements OnInit {
   }
 
   public removeProductFromCart(cproduct:Products) {
+    console.log("was I in remove");
     this.total=this.total-cproduct.price;
     this.productsInCart=this.productsInCart.filter(item =>item._id!=cproduct._id);
+  //  sessionStorage.clear();
+    this.storage.set(AppGlobal.CART_KEY, this.productsInCart);
+  
   }
 
     
   public inCartProduct(cproduct:Products):boolean {
     var index=this.productsInCart.findIndex(item => item._id === cproduct._id);
+
     if(index==-1){
        return false;
     }else{
        return true;
     }
   }
+   public checkitout(): void{
+    console.log("was I here to checkout");
+    this.router.navigate(['checkout']);
+   }
 
 }

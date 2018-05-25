@@ -1,0 +1,15 @@
+<br/><br/>
+<h5 style="text-underline-position: below">Order Summary</h5>
+<hr/>
+<div >
+<h6>Product Cost: {{ptotalPrice}}</h6>
+<h6>Tax: {{ptotalPrice *0.01}} </h6>
+<h6>Discount: 0</h6>
+<br><br>
+<h6>Order Total: {{(ptotalPrice*0.001)+ptotalPrice}}</h6>
+</div>
+
+<hr/>
+<button type="button" (click)="pay();"  class="btn btn-primary">Pay</button>
+&nbsp;<button type="button" (click)="goback();"  class="btn btn-primary">Back</button>
+&nbsp;

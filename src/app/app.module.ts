@@ -17,7 +17,6 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { StorefrontComponent } from './components/storefront/storefront.component';
 import { AuthService } from './service/auth.service';
 import { AppRoutingModule } from './app.routing';
-import { AccountComponent } from './components/account/account.component';
 import { DataService } from './service/data.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AddProductPopup} from './components/popup/addproduct.component';
@@ -28,6 +27,8 @@ import { EditProduct } from './components/popup/editproduct.component';
 import { CHidden } from '../directive/chidden.directive';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { AuthGuard } from './components/auth/auth-guard';
+import { OrderSummaryComponent } from './components/checkout/order.component-summary';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -41,12 +42,13 @@ import { AuthGuard } from './components/auth/auth-guard';
     CheckoutComponent,
     CustomersComponent,
     StorefrontComponent,
-    AccountComponent,
     AddProductPopup,
     SignupComponent,
     ProfilesCompoment,
     EditProduct,
     CHidden,
+    OrderSummaryComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

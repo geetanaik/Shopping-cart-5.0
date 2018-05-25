@@ -18,7 +18,8 @@ export class SignUpService{
 
   // new URL pattern in order to implement Auth/token  let step=this.http.get("http://132.148.156.135:444/api/v1" + "/profiles");
          var headers: Headers = new Headers({'user-access-token':this.authService.token});
-         let step=this.http.get(AppSettings.API_ENDPOINT+"/profiles",{headers:headers});
+         let step=this.http.get(AppSettings.AUTH_ENDPOINT+"/profiles",{headers:headers});
+        
 
         let jsonData=step.map((response) => response.json());
         
